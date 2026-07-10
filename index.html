@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Solfeggio Sanctuary — глибокі медитації на справжніх Сольфеджіо частотах з Binaural Beats. Безкоштовно.">
+
+    <title>Solfeggio Sanctuary</title>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=3">
+</head>
+<body>
+    <!-- Fullscreen Canvas Visualizer -->
+    <canvas id="visualizer-canvas"></canvas>
+
+    <div class="app" id="app">
+        <!-- Header -->
+        <header class="header animate-in">
+            <div class="header__logo">Solfeggio Sanctuary</div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Frequency Info (center) -->
+            <section class="freq-info animate-in animate-in--delay-1" id="freq-info">
+                <div class="freq-info__hz" id="freq-hz">528<span>Hz</span></div>
+                <div class="freq-info__name" id="freq-name">Miracle</div>
+                <div class="freq-info__desc" id="freq-desc">Частота любові та трансформації</div>
+            </section>
+
+            <!-- Frequency Selector -->
+            <section class="freq-selector animate-in animate-in--delay-2">
+                <div class="freq-selector__track" id="freq-track">
+                    <!-- Rendered by JS -->
+                </div>
+            </section>
+
+            <!-- Binaural Selector -->
+            <section class="binaural-selector animate-in animate-in--delay-3" id="binaural-selector">
+                <!-- Rendered by JS -->
+            </section>
+
+            <!-- Headphones Notice -->
+            <div class="headphones-notice" id="headphones-notice">
+                <span class="headphones-notice__icon">🎧</span>
+                <span>Для binaural beats використовуйте навушники</span>
+            </div>
+        </main>
+
+        <!-- Controls (thumb zone) -->
+        <footer class="controls animate-in animate-in--delay-4">
+            <!-- Volume + Timer -->
+            <div class="controls__row">
+                <div class="volume-slider">
+                    <span class="volume-slider__icon">🔈</span>
+                    <input
+                        type="range"
+                        class="volume-slider__input"
+                        id="volume-slider"
+                        min="0"
+                        max="100"
+                        value="70"
+                        aria-label="Гучність"
+                    >
+                    <span class="volume-slider__icon">🔊</span>
+                </div>
+                <button class="timer-btn" id="timer-btn" aria-label="Таймер">
+                    <span class="timer-btn__icon">⏱️</span>
+                    <span class="timer-display" id="timer-display">∞</span>
+                </button>
+            </div>
+
+            <!-- Play Button -->
+            <button class="play-btn" id="play-btn" aria-label="Відтворити">
+                <span class="play-btn__icon" id="play-icon">▶</span>
+                <span id="play-label">PLAY</span>
+            </button>
+        </footer>
+    </div>
+
+    <!-- Timer Modal -->
+    <div class="timer-modal" id="timer-modal">
+        <div class="timer-modal__sheet">
+            <div class="timer-modal__title">Таймер медитації</div>
+            <div class="timer-modal__options" id="timer-options">
+                <!-- Rendered by JS -->
+            </div>
+            <button class="timer-modal__close" id="timer-close">Закрити</button>
+        </div>
+    </div>
+
+    <!-- JS Modules -->
+    <script type="module" src="js/app.js?v=3"></script>
+</body>
+</html>
