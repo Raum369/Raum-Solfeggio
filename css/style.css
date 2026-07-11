@@ -11,25 +11,27 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
 
 :root {
-    /* Background */
-    --bg-primary: #000000;
-    --bg-card: rgba(255, 255, 255, 0.03);
-    --bg-card-hover: rgba(255, 255, 255, 0.06);
-    --bg-card-active: rgba(255, 255, 255, 0.08);
+    /* Background — Cosmic Deep */
+    --bg-primary: #030014;
+    --bg-card: rgba(255, 255, 255, 0.04);
+    --bg-card-hover: rgba(255, 255, 255, 0.07);
+    --bg-card-active: rgba(255, 255, 255, 0.10);
+    --bg-glass: rgba(255, 255, 255, 0.05);
 
-    /* Borders */
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-medium: rgba(255, 255, 255, 0.1);
-    --border-accent: rgba(255, 255, 255, 0.15);
+    /* Borders — Glassmorphism */
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-medium: rgba(255, 255, 255, 0.12);
+    --border-accent: rgba(255, 255, 255, 0.18);
+    --border-glow: rgba(203, 194, 227, 0.15);
 
-    /* Text */
-    --text-primary: rgba(255, 255, 255, 0.9);
-    --text-secondary: rgba(255, 255, 255, 0.5);
-    --text-tertiary: rgba(255, 255, 255, 0.25);
-    --text-muted: rgba(255, 255, 255, 0.15);
+    /* Text — Ethereal Hierarchy */
+    --text-primary: rgba(212, 228, 250, 0.95);
+    --text-secondary: rgba(202, 197, 205, 0.7);
+    --text-tertiary: rgba(202, 197, 205, 0.35);
+    --text-muted: rgba(202, 197, 205, 0.18);
 
     /* Accent — overridden dynamically */
     --accent: #E8E8E8;
@@ -79,6 +81,9 @@ html {
 body {
     font-family: 'Inter', -apple-system, 'SF Pro Display', 'Helvetica Neue', sans-serif;
     background: var(--bg-primary);
+    background-image: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124, 92, 252, 0.08) 0%, transparent 60%),
+                      radial-gradient(ellipse 60% 50% at 50% 100%, rgba(107, 203, 119, 0.05) 0%, transparent 50%);
+    background-attachment: fixed;
     color: var(--text-primary);
     overflow-x: hidden;
     min-height: 100dvh;
@@ -96,6 +101,25 @@ body {
     height: 100%;
     z-index: 0;
     pointer-events: none;
+}
+
+/* ---------- Sacred Geometry SVG Background ---------- */
+.sacred-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(90vw, 500px);
+    height: min(90vw, 500px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
+    animation: sacredRotate 120s linear infinite;
+}
+
+@keyframes sacredRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 /* ---------- App Container ---------- */
@@ -151,13 +175,14 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     transform: translate(-50%, -50%);
-    border: 1px solid var(--text-muted);
+    border: 1px solid rgba(203, 194, 227, 0.08);
     border-radius: 50%;
     pointer-events: none;
     transition: all var(--duration-slow) var(--ease-out);
+    box-shadow: 0 0 40px rgba(124, 92, 252, 0.03);
 }
 
 .freq-info::after {
@@ -165,10 +190,10 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 140px;
-    height: 140px;
+    width: 155px;
+    height: 155px;
     transform: translate(-50%, -50%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(203, 194, 227, 0.05);
     border-radius: 50%;
     pointer-events: none;
     transition: all var(--duration-slow) var(--ease-out);
@@ -183,9 +208,9 @@ body {
 }
 
 .freq-info__hz {
-    font-size: 3rem;
-    font-weight: 300;
-    letter-spacing: -0.02em;
+    font-size: 4rem;
+    font-weight: 100;
+    letter-spacing: -0.03em;
     line-height: 1;
     color: var(--text-primary);
     transition: color var(--duration-normal) var(--ease-out), opacity var(--duration-normal) var(--ease-out);
@@ -194,10 +219,10 @@ body {
 }
 
 .freq-info__hz span {
-    font-size: 1.125rem;
-    font-weight: 300;
-    opacity: 0.4;
-    margin-left: 2px;
+    font-size: 1rem;
+    font-weight: 200;
+    opacity: 0.3;
+    margin-left: 4px;
 }
 
 .freq-info__name {
@@ -265,9 +290,11 @@ body {
     width: 108px;
     height: 94px;
     padding: 8px;
-    background: var(--bg-card);
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     cursor: pointer;
     transition: all var(--duration-normal) var(--ease-out);
     position: relative;
@@ -280,8 +307,9 @@ body {
 }
 
 .freq-card--active {
-    background: var(--bg-card-active);
-    border-color: rgba(var(--freq-color-rgb), 0.3);
+    background: rgba(var(--freq-color-rgb), 0.08);
+    border-color: rgba(var(--freq-color-rgb), 0.35);
+    box-shadow: 0 0 20px rgba(var(--freq-color-rgb), 0.1), inset 0 0 20px rgba(var(--freq-color-rgb), 0.03);
 }
 
 /* Subtle glow line at top of active card */
@@ -357,15 +385,17 @@ body {
     justify-content: center;
     min-height: 40px;
     padding: var(--space-sm) var(--space-md);
-    background: transparent;
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-full);
     font-size: 0.75rem;
-    font-weight: 400;
+    font-weight: 300;
     color: var(--text-tertiary);
     cursor: pointer;
     transition: all var(--duration-normal) var(--ease-out);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
 }
 
 .binaural-pill:active {
@@ -374,9 +404,10 @@ body {
 }
 
 .binaural-pill--active {
-    background: rgba(var(--freq-color-rgb), 0.08);
-    border-color: rgba(var(--freq-color-rgb), 0.25);
-    color: var(--text-secondary);
+    background: rgba(var(--freq-color-rgb), 0.10);
+    border-color: rgba(var(--freq-color-rgb), 0.30);
+    color: var(--text-primary);
+    box-shadow: 0 0 16px rgba(var(--freq-color-rgb), 0.08);
 }
 
 .binaural-pill__beat {
@@ -491,17 +522,19 @@ body {
     justify-content: center;
     min-width: var(--touch-target);
     min-height: var(--touch-target);
-    background: transparent;
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-full);
     color: var(--text-tertiary);
     font-size: 0.75rem;
-    font-weight: 400;
+    font-weight: 300;
     cursor: pointer;
     transition: all var(--duration-normal) var(--ease-out);
     padding: 0 var(--space-md);
     gap: 6px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
 }
 
 .timer-btn:active {
@@ -528,14 +561,16 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: 56px;
-    background: transparent;
-    border: 1px solid var(--border-medium);
-    border-radius: var(--radius-lg);
+    min-height: 60px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glow);
+    border-radius: var(--radius-full);
     color: var(--text-secondary);
     font-size: 0.8125rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
+    font-weight: 400;
+    letter-spacing: 0.2em;
     cursor: pointer;
     transition: all var(--duration-normal) var(--ease-out);
     position: relative;
@@ -550,8 +585,9 @@ body {
 }
 
 .play-btn--playing {
-    border-color: rgba(var(--freq-color-rgb), 0.2);
+    border-color: rgba(var(--freq-color-rgb), 0.35);
     color: var(--text-primary);
+    box-shadow: 0 0 30px rgba(var(--freq-color-rgb), 0.12), inset 0 0 30px rgba(var(--freq-color-rgb), 0.04);
 }
 
 /* Subtle animated glow when playing */
@@ -605,7 +641,9 @@ body {
 .timer-modal__sheet {
     width: 100%;
     max-width: 400px;
-    background: rgba(18, 18, 18, 0.98);
+    background: rgba(12, 8, 24, 0.95);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-xl);
     padding: var(--space-xl);
@@ -787,7 +825,7 @@ body {
     }
 
     .freq-info__hz {
-        font-size: 4.5rem;
+        font-size: 5.5rem;
     }
 
     .freq-info::before {
@@ -838,7 +876,7 @@ body {
 
 @media (min-width: 1024px) {
     .freq-info__hz {
-        font-size: 5.5rem;
+        font-size: 6.5rem;
     }
 
     .main {

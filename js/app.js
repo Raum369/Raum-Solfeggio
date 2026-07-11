@@ -3,9 +3,9 @@
  * Integrates UI components, Audio Engine, Canvas Visualizer, and state persistence.
  */
 
-import { SOLFEGGIO_FREQUENCIES, BINAURAL_BEATS, TIMER_OPTIONS, SYNTH_CONFIG } from './data.js?v=3';
-import { SolfeggioEngine } from './audio-engine.js?v=3';
-import { SolfeggioVisualizer } from './visualizer.js?v=3';
+import { SOLFEGGIO_FREQUENCIES, BINAURAL_BEATS, TIMER_OPTIONS, SYNTH_CONFIG } from './data.js?v=4';
+import { SolfeggioEngine } from './audio-engine.js?v=4';
+import { SolfeggioVisualizer } from './visualizer.js?v=4';
 
 /* ──── State Management ──── */
 const state = {
